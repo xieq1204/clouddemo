@@ -1,0 +1,60 @@
+spring:
+  datasource:
+    dynamic:
+      primary: postgresql
+      datasource:
+        postgresql:
+          url: jdbc:postgresql://139.9.100.170:5432/feeding
+          username: feeding
+          password: feeding
+          driver-class-name: org.postgresql.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.9.100.170:8848
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+  #  zipkin:
+  #    base-url: http://10.7.4.77:9411
+  #    compression:
+  #      enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
+  redis:
+    host: 139.9.100.170
+    port: 6379
+    database: 1
+    lettuce:
+      pool:
+        max-active: 100
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  local:
+    default:
+      type: linkedhashmap
+      keyConvertor: fastjson
+      limit: 100
+  remote:
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${spring.redis.host}
+      port: ${spring.redis.port}
+ucenter:
+  login-page: http://localhost:9528/ucenter/#/login
+  logout-page: http://localhost:9528/ucenter#/logout
+  app-key: ZD5cCbLKLvtHXWHRqRUf8itRHrw0pGakfJ8M0B0fvnHIUermRnsaVIFwkWLHQl4V
+  white-pages: /login,/logout,/swagger-ui.html,/swagger/**,/webjars/**,/swagger-resources/**
+
