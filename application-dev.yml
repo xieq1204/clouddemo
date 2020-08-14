@@ -58,5 +58,5 @@ ucenter:
   app-key: ZD5cCbLKLvtHXWHRqRUf8itRHrw0pGakfJ8M0B0fvnHIUermRnsaVIFwkWLHQl4V
   white-pages: /login,/logout,/swagger-ui.html,/swagger/**,/webjars/**,/swagger-resources/**
 config:
- info: dev kai version  = 2
+ info: dev kai version  = 3
 
